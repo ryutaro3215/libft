@@ -6,7 +6,7 @@
 /*   By: rmatsuba <rmatsuba@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/21 11:36:06 by rmatsuba          #+#    #+#             */
-/*   Updated: 2023/09/26 13:43:45 by rmatsuba         ###   ########.fr       */
+/*   Updated: 2023/09/27 19:07:03 by rmatsuba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ char	*ft_itoa(int n)
 		return (NULL);
 	insert_string(ln, string_num, digit);
 	return (string_num);
-}	
+}
 
 void	insert_string(long ln, char *string_num, int digit)
 {

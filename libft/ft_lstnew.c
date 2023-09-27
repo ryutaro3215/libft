@@ -1,26 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_calloc.c                                        :+:      :+:    :+:   */
+/*   ft_lstnew.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rmatsuba <rmatsuba@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: rmatsuba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/23 18:35:13 by rmatsuba          #+#    #+#             */
-/*   Updated: 2023/09/27 20:50:01 by rmatsuba         ###   ########.fr       */
+/*   Created: 2023/09/27 19:12:43 by rmatsuba          #+#    #+#             */
+/*   Updated: 2023/09/27 20:00:52 by rmatsuba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_calloc(size_t count, size_t size)
+t_list	*ft_lstnew(void *content)
 {
-	void	*re_mem;
-	char	*tmp;
+	t_list	*new_struct;
 
-	re_mem = malloc(count * size);
-	if (re_mem == NULL)
+	new_struct = (t_list *)malloc(sizeof(t_list));
+	if (!(new_struct))
 		return (NULL);
-	tmp = (char *)re_mem;
-	ft_bzero(tmp, count * size);
-	return (re_mem);
+	new_struct->content = content;
+	new_struct->next = NULL;
+	return (new_struct);
 }
