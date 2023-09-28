@@ -1,33 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   help.c                                             :+:      :+:    :+:   */
+/*   ft_lstiter.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rmatsuba <rmatsuba@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: rmatsuba <rmatsuba@student.42tokyo.>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/20 16:28:08 by rmatsuba          #+#    #+#             */
-/*   Updated: 2023/09/28 21:41:59 by rmatsuba         ###   ########.fr       */
+/*   Created: 2023/09/28 18:12:10 by rmatsuba          #+#    #+#             */
+/*   Updated: 2023/09/28 20:19:02 by rmatsuba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	digit_count(long n)
+void	ft_lstiter(t_list *lst, void (*f)(void *))
 {
-	int	i;
+	t_list	*tmp;
 
-	i = 0;
-	if (n == 0)
-		i = 1;
-	if (n < 0)
+	while (lst)
 	{
-		n = -n;
-		i++;
+		tmp = lst->next;
+		f(lst->content);
+		lst = tmp;
 	}
-	while (n > 0)
-	{
-		i++;
-		n = n / 10;
-	}
-	return (i);
 }

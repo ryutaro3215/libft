@@ -1,33 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   help.c                                             :+:      :+:    :+:   */
+/*   ft_lstclear.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rmatsuba <rmatsuba@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: rmatsuba <rmatsuba@student.42tokyo.>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/20 16:28:08 by rmatsuba          #+#    #+#             */
-/*   Updated: 2023/09/28 21:41:59 by rmatsuba         ###   ########.fr       */
+/*   Created: 2023/09/28 17:07:15 by rmatsuba          #+#    #+#             */
+/*   Updated: 2023/09/28 20:17:38 by rmatsuba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	digit_count(long n)
+void	ft_lstclear(t_list **lst, void (*del)(void *))
 {
-	int	i;
+	t_list	*tmp;
 
-	i = 0;
-	if (n == 0)
-		i = 1;
-	if (n < 0)
+	if (lst)
 	{
-		n = -n;
-		i++;
+		while (*lst)
+		{
+			tmp = (*lst)->next;
+			ft_lstdelone(*lst, del);
+			*lst = tmp;
+		}
 	}
-	while (n > 0)
-	{
-		i++;
-		n = n / 10;
-	}
-	return (i);
 }
