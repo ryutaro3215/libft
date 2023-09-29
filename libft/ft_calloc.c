@@ -15,15 +15,10 @@
 void	*ft_calloc(size_t count, size_t size)
 {
 	void	*re_mem;
-	char	*tmp;
 
-	/*if ((int)count <= 0 || (int)size <= 0)
-		return (NULL);
-	*/
 	re_mem = malloc(count * size);
 	if (re_mem == NULL)
 		return (NULL);
-	tmp = (char *)re_mem;
-	ft_bzero(tmp, count * size);
+	ft_bzero(re_mem, count * size);
 	return (re_mem);
 }
