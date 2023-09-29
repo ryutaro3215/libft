@@ -15,13 +15,15 @@
 void	ft_bzero(void *s, size_t n)
 {
 	char	*w;
+	int	i;
 
 	w = (char *)s;
+	i = 0;
 	if (n == 0)
 		return ;
 	while (n--)
 	{
-		*w = '\0';
-		w++;
+		w[i] = '\0';
+		i++;
 	}
 }
