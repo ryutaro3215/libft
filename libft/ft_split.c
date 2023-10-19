@@ -6,113 +6,107 @@
 /*   By: rmatsuba <rmatsuba@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 16:53:59 by rmatsuba          #+#    #+#             */
-/*   Updated: 2023/09/28 22:01:24 by rmatsuba         ###   ########.fr       */
+/*   Updated: 2023/10/19 16:40:48 by rmatsuba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*word_point(char const *s, char c);
-int		word_num(char const *s, char c);
-int		word_len(char const *s, char c);
+unsigned int	word_count(char const *s, char c);
+void			word_len(char **tmp, unsigned int *len, char c);
+char			**free_str(char **splited_str);
+char			**make_str(char const *s, char c, char **splited_str);
 
 char	**ft_split(char const *s, char c)
 {
 	char	**splited_str;
-	int		i;
+
+	if (!s)
+		return (NULL);
+	splited_str = (char **)malloc(sizeof(char *) * (word_count(s, c) + 1));
+	if (!splited_str)
+		return (NULL);
+	return (make_str(s, c, splited_str));
+}
+
+unsigned int	word_count(char const *s, char c)
+{
+	unsigned int	result;
+	int				i;
+
+	result = 0;
+	i = 0;
+	while (s[i])
+	{
+		if (s[i] != c)
+		{
+			result++;
+			while (s[i] != c && s[i])
+				i++;
+		}
+		else
+		{
+			while (s[i] == c && s[i])
+				i++;
+		}
+	}
+	return (result);
+}
+
+void	word_len(char **tmp, unsigned int *len, char c)
+{
+	unsigned int	i;
+
+	*tmp += *len;
+	*len = 0;
+	i = 0;
+	while (**tmp && **tmp == c)
+		(*tmp)++;
+	while ((*tmp)[i])
+	{
+		if ((*tmp)[i] == c)
+			return ;
+		(*len)++;
+		i++;
+	}
+}
+
+char	**free_str(char **splited_str)
+{
+	unsigned int	i;
 
 	i = 0;
-	splited_str = (char **)malloc(sizeof(char *) * word_num(s, c) + 1);
-	if (splited_str == NULL)
-		return (NULL);
-	while (*s != '\0')
+	while (splited_str[i])
 	{
-		while (*s && *s == c)
-			s++;
-		if (*s && *s != c)
-		{
-			splited_str[i] = word_point(s, c);
-			i++;
-		}
-		while (*s && *s != c)
-			s++;
+		free(splited_str[i]);
+		splited_str[i] = NULL;
+		i++;
+	}
+	free(splited_str);
+	splited_str = NULL;
+	return (NULL);
+}
+
+char	**make_str(char const *s, char c, char **splited_str)
+{
+	unsigned int	count;
+	unsigned int	i;
+	unsigned int	len;
+	char			*tmp;
+
+	i = 0;
+	tmp = (char *)s;
+	count = word_count(s, c);
+	len = 0;
+	while (i < count)
+	{
+		word_len(&tmp, &len, c);
+		splited_str[i] = (char *)malloc(sizeof(char) * len + 1);
+		if (splited_str[i] == NULL)
+			return (free_str(splited_str));
+		ft_strlcpy(splited_str[i], tmp, (size_t)len + 1);
+		i++;
 	}
 	splited_str[i] = NULL;
 	return (splited_str);
 }
-
-char	*word_point(char const *s, char c)
-{
-	int		len;
-	int		i;
-	char	*word;
-
-	i = 0;
-	len = word_len(s, c);
-	word = (char *)malloc(len + 1);
-	if (word == NULL)
-		return (NULL);
-	while (i < len)
-	{
-		word[i] = s[i];
-		i++;
-	}
-	word[i] = '\0';
-	return (word);
-}
-
-int	word_num(char const *s, char c)
-{
-	int	i;
-	int	count;
-
-	i = 0;
-	count = 0;
-	while (s[i] != '\0')
-	{
-		if (s[i] != '\0' && s[i] != c)
-			count++;
-		while (s[i] != '\0' && s[i] != c)
-			i++;
-		while (s[1] != '\0' && s[i] == c)
-			i++;
-	}
-	return (count);
-}
-
-int	word_len(char const *s, char c)
-{
-	int	i;
-
-	i = 0;
-	while (s[i] != '\0' && s[i] != c)
-		i++;
-	return (i);
-}
-
-// int main()
-// {
-//     const char *input_string = "      split       this for   me  !       ";
-//     char separator = ' '; // 区切り文字をスペースに設定
-
-//     char **result = ft_split(input_string, separator);
-
-//     if (result == NULL)
-//     {
-//         printf("Error: Memory allocation failed.\n");
-//         return 1;
-//     }
-
-//     // 分割された単語を表示
-//     int i = 0;
-//     while (result[i] != NULL)
-//     {
-//         printf("Word %d: %s\n", i + 1, result[i]);
-//         free(result[i]); // 動的メモリの解放
-//         i++;
-//     }
-
-//     free(result); // 動的メモリの解放
-
-//     return 0;
-// }

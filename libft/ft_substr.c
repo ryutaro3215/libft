@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_substr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rmatsuba <rmatsuba@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: ryutaro320515 <ryutaro320515@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 10:25:24 by rmatsuba          #+#    #+#             */
-/*   Updated: 2023/09/26 16:30:37 by rmatsuba         ###   ########.fr       */
+/*   Updated: 2023/09/30 00:49:20 by ryutaro3205      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,11 @@ char	*make_substr(size_t len, unsigned int start, char const *s);
 
 char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
-	int		i;
-	int		j;
 	size_t	s_len;
 	char	*result;
 
-	j = 0;
-	i = start;
+	if (!s)
+		return (NULL);
 	s_len = ft_strlen(s);
 	if (start >= (unsigned int)s_len)
 	{
@@ -39,8 +37,6 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 		return (result);
 	}
 }
-
-/* This function make arry and make substr*/
 
 char	*make_substr(size_t len, unsigned int start, char const *s)
 {
