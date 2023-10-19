@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rmatsuba <rmatsuba@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: ryutaro320515 <ryutaro320515@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/21 11:36:06 by rmatsuba          #+#    #+#             */
-/*   Updated: 2023/09/28 21:41:42 by rmatsuba         ###   ########.fr       */
+/*   Updated: 2023/10/18 11:16:23 by ryutaro3205      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,4 +55,23 @@ void	insert_string(long ln, char *string_num, int digit)
 		string_num[1] = '\0';
 	}
 	return ;
+}
+int	digit_count(long n)
+{
+	int	i;
+
+	i = 0;
+	if (n == 0)
+		i = 1;
+	if (n < 0)
+	{
+		n = -n;
+		i++;
+	}
+	while (n > 0)
+	{
+		i++;
+		n = n / 10;
+	}
+	return (i);
 }
