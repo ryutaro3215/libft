@@ -6,201 +6,107 @@
 /*   By: ryutaro320515 <ryutaro320515@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 16:53:59 by rmatsuba          #+#    #+#             */
-/*   Updated: 2023/09/30 00:06:49 by ryutaro3205      ###   ########.fr       */
+/*   Updated: 2023/10/19 11:16:32 by ryutaro3205      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-/*
-char	*word_point(char const *s, char c);
-int		word_num(char const *s, char c);
-int		word_len(char const *s, char c);
+
+unsigned int	word_count(char const *s, char c);
+void	word_len(char **tmp, unsigned int *len, char c);
+char	**free_str(char **splited_str);
+char	**make_str(char const *s, char c, char **splited_str);
 
 char	**ft_split(char const *s, char c)
 {
 	char	**splited_str;
-	int		i;
 
-	i = 0;
-	if (c == '\0')
+	if (!s)
 		return (NULL);
-	splited_str = (char **)malloc(sizeof(char *) * word_num(s, c) + 1);
-	if (splited_str == NULL)
+	splited_str = (char **)malloc(sizeof(char *) * (word_count(s, c) + 1));
+	if (!splited_str)
 		return (NULL);
-	while (*s != '\0')
-	{
-		while (*s && *s == c)
-			s++;
-		if (*s && *s != c)
-		{
-			splited_str[i] = word_point(s, c);
-			i++;
-		}
-		while (*s && *s != c)
-			s++;
-	}
-	splited_str[i] = NULL;
-	return (splited_str);
+	return (make_str(s, c, splited_str));
 }
 
-char	*word_point(char const *s, char c)
+unsigned int	word_count(char const *s, char c)
 {
-	int		len;
-	int		i;
-	char	*word;
+	unsigned int	result;
+	int				i;
 
+	result = 0;
 	i = 0;
-	len = word_len(s, c);
-	word = (char *)malloc(len + 1);
-	if (word == NULL)
-		return (NULL);
-	while (i < len)
-	{
-		word[i] = s[i];
-		i++;
-	}
-	word[i] = '\0';
-	return (word);
-}
-
-int	word_num(char const *s, char c)
-{
-	int	i;
-	int	count;
-
-	i = 0;
-	count = 0;
-	while (s[i] != '\0')
-	{
-		if (s[i] != '\0' && s[i] != c)
-			count++;
-		while (s[i] != '\0' && s[i] != c)
-			i++;
-		while (s[1] != '\0' && s[i] == c)
-			i++;
-	}
-	return (count);
-}
-
-int	word_len(char const *s, char c)
-{
-	int	i;
-
-	i = 0;
-	while (s[i] != '\0' && s[i] != c)
-		i++;
-	return (i);
-}
-*/
-static int		ft_wordscount(char const *s, char c)
-{
-	int	i;
-	int	words;
-
-	i = 0;
-	words = 0;
 	while (s[i])
 	{
 		if (s[i] != c)
 		{
-			words++;
-			while (s[i] != c && s[i] != '\0')
-			{
+			result++;
+			while (s[i] != c && s[i])
 				i++;
-			}
-			if (s[i] == '\0')
-				return (words);
 		}
-		i++;
+		else
+		{
+			while (s[i] == c && s[i])
+				i++;
+		}
 	}
-	return (words);
+	return (result);
 }
 
-static char		**ft_free2d_split(char **strarr)
+void	word_len(char **tmp, unsigned int *len, char c)
 {
-	int	i;
+	unsigned int	i;
 
+	*tmp += *len;
+	*len = 0;
 	i = 0;
-	while (strarr[i])
+	while (**tmp && **tmp == c)
+		(*tmp)++;
+	while ((*tmp)[i])
 	{
-		free(strarr[i]);
+		if ((*tmp)[i] == c)
+			return ;
+		(*len)++;
 		i++;
 	}
-	free(strarr);
+}
+
+char	**free_str(char **splited_str)
+{
+	unsigned int	i;
+
+	i = 0;
+	while (splited_str[i])
+	{
+		free(splited_str[i]);
+		splited_str[i] = NULL;
+		i++;
+	}
+	free(splited_str);
+	splited_str = NULL;
 	return (NULL);
 }
 
-static int		word_end(char *s, char c, int i)
+char	**make_str(char const *s, char c, char **splited_str)
 {
-	int		click;
+	unsigned int	count;
+	unsigned int	i;
+	unsigned int	len;
+	char			*tmp;
 
-	click = 0;
-	while (s && s[i] && click != 1)
-	{
-		if (s[i] != c)
-		{
-			while (s[i] != c && s[i] != '\0')
-				i++;
-			click = 1;
-		}
-		if (click != 1)
-			i++;
-	}
-	return (i);
-}
-
-static char		*word_allocate(char *s, char c, int i, int j)
-{
-	char	*word;
-	int		click;
-
-	click = 0;
-	while (s && *s && click != 1)
-	{
-		if (*s != c)
-		{
-			while (s[i] != c && s[i] != '\0')
-				i++;
-			click = 1;
-		}
-		if (click != 1)
-			s++;
-	}
-	if (!(word = malloc(i + 1)))
-		return (NULL);
-	while (s && *s && *s != c)
-	{
-		word[j] = *s++;
-		j++;
-	}
-	word[j] = '\0';
-	return (word);
-}
-
-char			**ft_split(char const *s, char c)
-{
-	char	**strarr;
-	int		j;
-	int		i;
-	int		remember;
-
-	if (!s)
-		return (NULL);
-	j = ft_wordscount(s, c);
 	i = 0;
-	remember = 0;
-	if (!(strarr = malloc(sizeof(char *) * (j + 1))))
-		return (NULL);
-	strarr[j] = NULL;
-	while (i < j)
+	tmp = (char *)s;
+	count = word_count(s, c);
+	len = 0;
+	while (i < count)
 	{
-		if (!(strarr[i] = word_allocate((char *)(s + remember), c, 0, 0)))
-		{
-			ft_free2d_split(strarr);
-			return (NULL);
-		}
-		remember = word_end((char *)s, c, remember);
+		word_len(&tmp, &len, c);
+		splited_str[i] = (char *)malloc(sizeof(char) * len + 1);
+		if (splited_str[i] == NULL)
+			return (free_str(splited_str));
+		ft_strlcpy(splited_str[i], tmp, (size_t)len + 1);
 		i++;
 	}
-	return (strarr);
+	splited_str[i] = NULL;
+	return (splited_str);
 }

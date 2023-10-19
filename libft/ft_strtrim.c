@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strtrim.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rmatsuba <rmatsuba@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: ryutaro320515 <ryutaro320515@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 15:12:18 by rmatsuba          #+#    #+#             */
-/*   Updated: 2023/09/26 19:25:15 by rmatsuba         ###   ########.fr       */
+/*   Updated: 2023/10/18 18:29:11 by ryutaro3205      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,10 @@ char	*ft_strtrim(char const *s1, char const *set)
 
 	i = 0;
 	j = 0;
+	if (!s1)
+		return (NULL);
 	mem_size = count_size(s1, set);
-	trimed_str = (char *)malloc(mem_size + 1);
-	if (trimed_str == NULL)
+	if (!(trimed_str = (char *)malloc(mem_size + 1)))
 		return (NULL);
 	while (s1[i] != '\0')
 	{
