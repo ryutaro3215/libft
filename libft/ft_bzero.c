@@ -6,7 +6,7 @@
 /*   By: rmatsuba <rmatsuba@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/22 15:40:14 by rmatsuba          #+#    #+#             */
-/*   Updated: 2023/09/28 21:21:04 by rmatsuba         ###   ########.fr       */
+/*   Updated: 2023/10/19 16:41:13 by rmatsuba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	ft_bzero(void *s, size_t n)
 {
 	char	*w;
-	int	i;
+	int		i;
 
 	w = (char *)s;
 	i = 0;

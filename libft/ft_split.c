@@ -3,19 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ryutaro320515 <ryutaro320515@student.42    +#+  +:+       +#+        */
+/*   By: rmatsuba <rmatsuba@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 16:53:59 by rmatsuba          #+#    #+#             */
-/*   Updated: 2023/10/19 11:16:32 by ryutaro3205      ###   ########.fr       */
+/*   Updated: 2023/10/19 16:40:48 by rmatsuba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
 unsigned int	word_count(char const *s, char c);
-void	word_len(char **tmp, unsigned int *len, char c);
-char	**free_str(char **splited_str);
-char	**make_str(char const *s, char c, char **splited_str);
+void			word_len(char **tmp, unsigned int *len, char c);
+char			**free_str(char **splited_str);
+char			**make_str(char const *s, char c, char **splited_str);
 
 char	**ft_split(char const *s, char c)
 {
