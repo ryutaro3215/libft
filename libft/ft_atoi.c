@@ -3,36 +3,54 @@
 /*                                                        :::      ::::::::   */
 /*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rmatsuba <rmatsuba@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: ryutaro320515 <ryutaro320515@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/23 17:54:08 by rmatsuba          #+#    #+#             */
-/*   Updated: 2023/09/23 18:53:23 by rmatsuba         ###   ########.fr       */
+/*   Updated: 2023/10/20 00:19:15 by ryutaro3205      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "libft.h"
+
 int	ft_atoi(const char *str)
 {
-	int	re_val;
-	int	i;
-	int	flag;
+	int		re_val;
+	int		i;
+	long	flag;
 
 	i = 0;
 	flag = 1;
 	re_val = 0;
-	while (str[i] == ' ' || str[i] == '\f' || str[i] == '\v'
-		|| str[i] == '\t' || str[i] == '\n' || str[i] == '\r')
+	while (str[i] == ' ' || (str[i] >= 9 && str[i] <= 13))
 		i++;
-	if (str[i] == '+')
-		i++;
-	else if (str[i] == '-')
+	if (str[i] == '+' || str[i] == '-')
 	{
-		flag = -1;
+		if (str[i] == '-')
+			flag = -1;
 		i++;
 	}
-	while (str[i] >= '0' && str[i] <= '9')
+	return (make_int(str, flag));
+}
+long	make_int(const char *str, long flag)
+{
+	long	number;
+	int		i;
+
+	number = 0;
+	if (str[i] >= '0' && str[i] <= '9')
 	{
-		re_val = re_val * 10 + (str[i] - '0');
+		number = str[i] - '0';
 		i++;
+		while (str[i] && str[i] >= '0' && str[i] <= '9')
+		{
+			number = number * 10;
+			if (check_number(number, flag, str[i] - '0') == 1)
+
+		}
 	}
-	return (re_val * flag);
+}
+
+int	check_number(long number, long flag, long next_num)
+{
+	if ()
 }
