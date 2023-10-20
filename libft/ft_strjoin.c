@@ -3,16 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ryutaro320515 <ryutaro320515@student.42    +#+  +:+       +#+        */
+/*   By: rmatsuba <rmatsuba@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 10:19:52 by rmatsuba          #+#    #+#             */
-/*   Updated: 2023/10/18 11:11:56 by ryutaro3205      ###   ########.fr       */
+/*   Updated: 2023/10/20 21:57:55 by rmatsuba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-
-void	fill_str(int j, char *concat_str, char const *s);
 
 char	*ft_strjoin(char const *s1, char const *s2)
 {
@@ -38,18 +36,4 @@ char	*ft_strjoin(char const *s1, char const *s2)
 		concat_str[j++] = s2[i++];
 	concat_str[j] = '\0';
 	return (concat_str);
-}
-
-/* This function fill the concat_str fron index j */
-void	fill_str(int j, char *concat_str, char const *s)
-{
-	int	i;
-
-	i = 0;
-	while (s[i] != '\0')
-	{
-		concat_str[j] = s[i];
-		i++;
-		j++;
-	}
 }

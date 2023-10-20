@@ -6,13 +6,11 @@
 /*   By: rmatsuba <rmatsuba@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/23 14:15:10 by rmatsuba          #+#    #+#             */
-/*   Updated: 2023/09/26 16:30:27 by rmatsuba         ###   ########.fr       */
+/*   Updated: 2023/10/20 21:48:02 by rmatsuba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-
-int	size_ary(char *ary);
 
 char	*ft_strrchr(const char *s, int c)
 {
@@ -20,7 +18,7 @@ char	*ft_strrchr(const char *s, int c)
 	int				i;
 	const char		*rev_ad;
 
-	i = size_ary((char *)s);
+	i = ft_strlen((char *)s);
 	w = (unsigned char)c;
 	rev_ad = s + i;
 	while (i >= 0)
@@ -31,14 +29,4 @@ char	*ft_strrchr(const char *s, int c)
 		i--;
 	}
 	return (NULL);
-}
-
-int	size_ary(char *ary)
-{
-	int	n;
-
-	n = 0;
-	while (ary[n] != '\0')
-		n++;
-	return (n);
 }

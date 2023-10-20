@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lstmap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ryutaro320515 <ryutaro320515@student.42    +#+  +:+       +#+        */
+/*   By: rmatsuba <rmatsuba@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/28 18:19:40 by rmatsuba          #+#    #+#             */
-/*   Updated: 2023/10/18 21:45:35 by ryutaro3205      ###   ########.fr       */
+/*   Updated: 2023/10/20 21:12:39 by rmatsuba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-t_list	*lst_clear(t_list *lst, void (*del)(void *));
+static t_list	*lst_clear(t_list *lst, void (*del)(void *));
 
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 {
@@ -36,7 +36,7 @@ t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 	return (new_lst);
 }
 
-t_list	*lst_clear(t_list *lst, void (*del)(void *))
+static t_list	*lst_clear(t_list *lst, void (*del)(void *))
 {
 	ft_lstclear(&lst, del);
 	return (NULL);

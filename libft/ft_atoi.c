@@ -6,14 +6,14 @@
 /*   By: rmatsuba <rmatsuba@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/23 17:54:08 by rmatsuba          #+#    #+#             */
-/*   Updated: 2023/10/20 14:17:44 by rmatsuba         ###   ########.fr       */
+/*   Updated: 2023/10/20 21:07:44 by rmatsuba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-long	make_int(const char *str, long flag);
-long	check_number(long number, long flag, long next_num);
+static long	make_int(const char *str, long flag);
+static long	check_number(long number, long flag, long next_num);
 
 int	ft_atoi(const char *str)
 {
@@ -31,7 +31,7 @@ int	ft_atoi(const char *str)
 	return (make_int(str, flag));
 }
 
-long	make_int(const char *str, long flag)
+static long	make_int(const char *str, long flag)
 {
 	long	number;
 	int		i;
@@ -55,7 +55,7 @@ long	make_int(const char *str, long flag)
 	return (0);
 }
 
-long	check_number(long number, long flag, long next_num)
+static long	check_number(long number, long flag, long next_num)
 {
 	if ((number * flag) > (LONG_MAX / 10))
 		return ((int)LONG_MAX);

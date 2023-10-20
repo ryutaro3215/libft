@@ -6,14 +6,14 @@
 /*   By: rmatsuba <rmatsuba@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 15:12:18 by rmatsuba          #+#    #+#             */
-/*   Updated: 2023/10/19 17:37:05 by rmatsuba         ###   ########.fr       */
+/*   Updated: 2023/10/20 21:48:39 by rmatsuba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	is_set(char c, char const *set);
-int	count_size(char const *s1, char const *s2);
+static int	is_set(char c, char const *set);
+static int	count_size(char const *s1, char const *s2);
 
 char	*ft_strtrim(char const *s1, char const *set)
 {
@@ -43,7 +43,7 @@ char	*ft_strtrim(char const *s1, char const *set)
 	return (trimed_str);
 }
 
-int	count_size(char const *s1, char const *s2)
+static int	count_size(char const *s1, char const *s2)
 {
 	int	head;
 	int	tail;
@@ -70,7 +70,7 @@ int	count_size(char const *s1, char const *s2)
 	return (s1_len - head - tail);
 }
 
-int	is_set(char c, char const *set)
+static int	is_set(char c, char const *set)
 {
 	int	i;
 

@@ -6,13 +6,14 @@
 /*   By: rmatsuba <rmatsuba@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/21 11:36:06 by rmatsuba          #+#    #+#             */
-/*   Updated: 2023/10/19 16:41:33 by rmatsuba         ###   ########.fr       */
+/*   Updated: 2023/10/20 21:11:55 by rmatsuba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	insert_string(long ln, char *string_num, int digit);
+static void	insert_string(long ln, char *string_num, int digit);
+static long	digit_count(long n);
 
 char	*ft_itoa(int n)
 {
@@ -29,7 +30,7 @@ char	*ft_itoa(int n)
 	return (string_num);
 }
 
-void	insert_string(long ln, char *string_num, int digit)
+static void	insert_string(long ln, char *string_num, int digit)
 {
 	int	i;
 
@@ -57,7 +58,7 @@ void	insert_string(long ln, char *string_num, int digit)
 	return ;
 }
 
-int	digit_count(long n)
+static long	digit_count(long n)
 {
 	int	i;
 

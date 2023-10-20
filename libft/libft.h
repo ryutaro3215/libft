@@ -3,17 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ryutaro320515 <ryutaro320515@student.42    +#+  +:+       +#+        */
+/*   By: rmatsuba <rmatsuba@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/22 18:40:27 by rmatsuba          #+#    #+#             */
-/*   Updated: 2023/10/19 23:38:10 by ryutaro3205      ###   ########.fr       */
+/*   Updated: 2023/10/20 21:53:20 by rmatsuba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
 # include <unistd.h>
-# include <stdio.h>
 # include <stdlib.h>
 # include <limits.h>
 
@@ -24,8 +23,6 @@ typedef struct s_list
 }			t_list;
 
 size_t	ft_strlen(char const *str);
-int		digit_count(long n);
-int		count_size(char const *s1, char const *set);
 int		ft_atoi(const char *str);
 void	ft_bzero(void *s, size_t n);
 void	*ft_calloc(size_t count, size_t size);

@@ -6,16 +6,16 @@
 /*   By: rmatsuba <rmatsuba@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 16:53:59 by rmatsuba          #+#    #+#             */
-/*   Updated: 2023/10/19 16:40:48 by rmatsuba         ###   ########.fr       */
+/*   Updated: 2023/10/20 21:36:15 by rmatsuba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-unsigned int	word_count(char const *s, char c);
-void			word_len(char **tmp, unsigned int *len, char c);
-char			**free_str(char **splited_str);
-char			**make_str(char const *s, char c, char **splited_str);
+static unsigned int	word_count(char const *s, char c);
+static void			word_len(char **tmp, size_t *len, char c);
+static char			**free_str(char **splited_str);
+static char			**make_str(char const *s, char c, char **splited_str);
 
 char	**ft_split(char const *s, char c)
 {
@@ -29,7 +29,7 @@ char	**ft_split(char const *s, char c)
 	return (make_str(s, c, splited_str));
 }
 
-unsigned int	word_count(char const *s, char c)
+static unsigned int	word_count(char const *s, char c)
 {
 	unsigned int	result;
 	int				i;
@@ -53,7 +53,7 @@ unsigned int	word_count(char const *s, char c)
 	return (result);
 }
 
-void	word_len(char **tmp, unsigned int *len, char c)
+static void	word_len(char **tmp, size_t *len, char c)
 {
 	unsigned int	i;
 
@@ -71,7 +71,7 @@ void	word_len(char **tmp, unsigned int *len, char c)
 	}
 }
 
-char	**free_str(char **splited_str)
+static char	**free_str(char **splited_str)
 {
 	unsigned int	i;
 
@@ -87,11 +87,11 @@ char	**free_str(char **splited_str)
 	return (NULL);
 }
 
-char	**make_str(char const *s, char c, char **splited_str)
+static char	**make_str(char const *s, char c, char **splited_str)
 {
 	unsigned int	count;
 	unsigned int	i;
-	unsigned int	len;
+	size_t			len;
 	char			*tmp;
 
 	i = 0;
@@ -104,7 +104,7 @@ char	**make_str(char const *s, char c, char **splited_str)
 		splited_str[i] = (char *)malloc(sizeof(char) * len + 1);
 		if (splited_str[i] == NULL)
 			return (free_str(splited_str));
-		ft_strlcpy(splited_str[i], tmp, (size_t)len + 1);
+		ft_strlcpy(splited_str[i], tmp, len + 1);
 		i++;
 	}
 	splited_str[i] = NULL;
