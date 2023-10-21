@@ -6,7 +6,7 @@
 #    By: rmatsuba <rmatsuba@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/22 18:37:00 by rmatsuba          #+#    #+#              #
-#    Updated: 2023/10/20 22:48:24 by rmatsuba         ###   ########.fr        #
+#    Updated: 2023/10/21 15:29:54 by rmatsuba         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,21 +26,31 @@ OBJS = ${SRCS:.c=.o}
 BONUS_OBJS = ${BONUS_SRCS:.c=.o}
 CFLAGS = -Wall -Wextra -Werror
 CC = cc
-NAME = libft
+NAME = libft.a
+DEPS = libft.h
+
+ifeq ($(MAKECMDGOALS), bonus)
+	SRCS += ${BONUS_SRCS}
+	OBJS += ${BONUS_OBJS}
+endif
 
 all : ${NAME}
+
 ${NAME} : ${OBJS}
-	ar rcsu ${NAME}.a ${OBJS}
-bonus: ${BONUS_OBJS} ${OBJS}
-	ar rcsu ${NAME}.a ${BONUS_OBJS} ${OBJS}
-%.o: %.c
+	ar -rcs ${NAME} ${OBJS}
+
+%.o: %.c ${DEPS}
 	${CC} ${CFLAGS} -c $< -o $@
 clean :
 	rm -f ${OBJS} ${BONUS_OBJS}
+
 fclean : clean
-	rm -f ${NAME}.a
+	rm -f ${NAME}
+
 re : fclean all
 	
+bonus: all
+
 .PHONY:			all clean fclean re bonus
 
 
