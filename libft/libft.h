@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rmatsuba <rmatsuba@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: ryutaro320515 <ryutaro320515@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/22 18:40:27 by rmatsuba          #+#    #+#             */
-/*   Updated: 2023/10/20 21:53:20 by rmatsuba         ###   ########.fr       */
+/*   Updated: 2023/12/05 18:31:18 by ryutaro3205      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include <limits.h>
+# include <stdarg.h>
 
 typedef struct s_list
 {
@@ -66,4 +67,19 @@ void	ft_lstdelone(t_list *lst, void (*del)(void *));
 void	ft_lstclear(t_list **lst, void (*del)(void *));
 void	ft_lstiter(t_list *lst, void (*f)(void *));
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
+int	ft_printf(const char *str, ...);
+int	judge_identifer(va_list argument, char word);
+int	ft_print_char(int chr);
+int	ft_print_string(char *str);
+int	ft_print_signed_int(int num);
+int	ft_print_unsigned_int(unsigned int un_num);
+int	ft_print_low_hex(unsigned int num);
+int	ft_print_upp_hex(unsigned int num);
+int	ft_count_int(int num);
+int	ft_count_unsigned_int(unsigned int num);
+int	ft_count_hex(unsigned int num);
+int	ft_print_pointer(unsigned long long address);
+int	ft_count_pointer(unsigned long long address);
+int	ft_print_address(unsigned long long address);
+
 #endif
