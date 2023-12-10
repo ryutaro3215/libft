@@ -6,11 +6,11 @@
 /*   By: ryutaro320515 <ryutaro320515@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/25 18:34:48 by rmatsuba          #+#    #+#             */
-/*   Updated: 2023/12/05 19:19:41 by ryutaro3205      ###   ########.fr       */
+/*   Updated: 2023/12/10 18:20:12 by ryutaro3205      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "ft_printf.h"
 
 int	ft_count_int(int num)
 {
