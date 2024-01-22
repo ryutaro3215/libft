@@ -6,11 +6,11 @@
 /*   By: ryutaro320515 <ryutaro320515@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/28 16:57:04 by rmatsuba          #+#    #+#             */
-/*   Updated: 2023/09/30 00:55:49 by ryutaro3205      ###   ########.fr       */
+/*   Updated: 2024/01/22 16:44:17 by ryutaro3205      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "includes/libft.h"
 
 void	ft_lstdelone(t_list *lst, void (*del)(void *))
 {

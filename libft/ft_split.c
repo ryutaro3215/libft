@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rmatsuba <rmatsuba@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: ryutaro320515 <ryutaro320515@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 16:53:59 by rmatsuba          #+#    #+#             */
-/*   Updated: 2023/10/20 21:36:15 by rmatsuba         ###   ########.fr       */
+/*   Updated: 2024/01/22 16:39:51 by ryutaro3205      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "includes/libft.h"
 
 static unsigned int	word_count(char const *s, char c);
 static void			word_len(char **tmp, size_t *len, char c);
