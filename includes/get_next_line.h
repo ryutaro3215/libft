@@ -6,7 +6,7 @@
 /*   By: ryutaro320515 <ryutaro320515@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 13:55:35 by rmatsuba          #+#    #+#             */
-/*   Updated: 2024/01/23 18:08:00 by ryutaro3205      ###   ########.fr       */
+/*   Updated: 2024/02/15 11:35:23 by ryutaro3205      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,12 +23,12 @@
 # endif
 
 char	*get_next_line(int fd);
-char	*ft_read(int fd, char *keep_string);
-char	*ft_get_line(char *keep_string);
-char	*ft_keep_str(char *keep_string, char *result_string);
-char	*ft_free(char *str);
-char	*ft_strchr(char *s, int c);
-size_t	ft_strlen(char *s);
-char	*ft_strjoin(char *s1, char *s2);
+char	*gnl_read(int fd, char *keep_string);
+char	*gnl_get_line(char *keep_string);
+char	*gnl_keep_str(char *keep_string, char *result_string);
+char	*gnl_free(char *str);
+char	*gnl_strchr(char *s, int c);
+size_t	gnl_strlen(char *s);
+char	*gnl_strjoin(char *s1, char *s2);
 
 #endif

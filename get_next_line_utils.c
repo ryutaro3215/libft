@@ -6,13 +6,13 @@
 /*   By: ryutaro320515 <ryutaro320515@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 13:55:55 by rmatsuba          #+#    #+#             */
-/*   Updated: 2024/01/23 17:29:38 by ryutaro3205      ###   ########.fr       */
+/*   Updated: 2024/02/15 11:34:14 by ryutaro3205      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/get_next_line.h"
 
-size_t	ft_strlen(char *str)
+size_t	gnl_strlen(char *str)
 {
 	size_t	len;
 
@@ -24,7 +24,7 @@ size_t	ft_strlen(char *str)
 	return (len);
 }
 
-char	*ft_strchr(char *str, int c)
+char	*gnl_strchr(char *str, int c)
 {
 	int	i;
 
@@ -32,7 +32,7 @@ char	*ft_strchr(char *str, int c)
 	if (str == NULL)
 		return (NULL);
 	if (c == '\0')
-		return ((char *)&str[ft_strlen(str)]);
+		return ((char *)&str[gnl_strlen(str)]);
 	while (str[i] != '\0')
 	{
 		if (str[i] == (char)c)
@@ -42,7 +42,7 @@ char	*ft_strchr(char *str, int c)
 	return (NULL);
 }
 
-char	*ft_strjoin(char *str1, char *str2)
+char	*gnl_strjoin(char *str1, char *str2)
 {
 	int		i;
 	int		j;
@@ -59,7 +59,7 @@ char	*ft_strjoin(char *str1, char *str2)
 	}
 	if (!str1 || !str2)
 		return (NULL);
-	result_str = malloc(sizeof(char) * (ft_strlen(str1) + ft_strlen(str2) + 1));
+	result_str = malloc(sizeof(char) * (gnl_strlen(str1) + gnl_strlen(str2) + 1));
 	if (!result_str)
 		return (NULL);
 	while (str1[++i] != '\0')
@@ -71,7 +71,7 @@ char	*ft_strjoin(char *str1, char *str2)
 	return (result_str);
 }
 
-char	*ft_free(char *str)
+char	*gnl_free(char *str)
 {
 	free(str);
 	return (NULL);
