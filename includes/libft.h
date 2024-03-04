@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ryutaro320515 <ryutaro320515@student.42    +#+  +:+       +#+        */
+/*   By: rmatsuba <rmatsuba@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/22 18:40:27 by rmatsuba          #+#    #+#             */
-/*   Updated: 2024/01/23 18:16:56 by ryutaro3205      ###   ########.fr       */
+/*   Updated: 2024/03/04 17:51:27 by rmatsuba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,20 +68,20 @@ void	ft_lstdelone(t_list *lst, void (*del)(void *));
 void	ft_lstclear(t_list **lst, void (*del)(void *));
 void	ft_lstiter(t_list *lst, void (*f)(void *));
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
-int	ft_printf(const char *str, ...);
-int	judge_identifer(va_list argument, char word);
-int	ft_print_char(int chr);
-int	ft_print_string(char *str);
-int	ft_print_signed_int(int num);
-int	ft_print_unsigned_int(unsigned int un_num);
-int	ft_print_low_hex(unsigned int num);
-int	ft_print_upp_hex(unsigned int num);
-int	ft_count_int(int num);
-int	ft_count_unsigned_int(unsigned int num);
-int	ft_count_hex(unsigned int num);
-int	ft_print_pointer(unsigned long long address);
-int	ft_count_pointer(unsigned long long address);
-int	ft_print_address(unsigned long long address);
+int		ft_printf(const char *str, ...);
+int		judge_identifer(va_list argument, char word);
+int		ft_print_char(int chr);
+int		ft_print_string(char *str);
+int		ft_print_signed_int(int num);
+int		ft_print_unsigned_int(unsigned int un_num);
+int		ft_print_low_hex(unsigned int num);
+int		ft_print_upp_hex(unsigned int num);
+int		ft_count_int(int num);
+int		ft_count_unsigned_int(unsigned int num);
+int		ft_count_hex(unsigned int num);
+int		ft_print_pointer(unsigned long long address);
+int		ft_count_pointer(unsigned long long address);
+int		ft_print_address(unsigned long long address);
 char	*get_next_line(int fd);
 char	*ft_read(int fd, char *keep_string);
 char	*ft_get_line(char *keep_string);

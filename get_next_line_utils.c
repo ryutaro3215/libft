@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ryutaro320515 <ryutaro320515@student.42    +#+  +:+       +#+        */
+/*   By: rmatsuba <rmatsuba@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 13:55:55 by rmatsuba          #+#    #+#             */
-/*   Updated: 2024/02/15 11:34:14 by ryutaro3205      ###   ########.fr       */
+/*   Updated: 2024/03/04 17:52:18 by rmatsuba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ char	*gnl_strjoin(char *str1, char *str2)
 {
 	int		i;
 	int		j;
-	char	*result_str;
+	char	*result;
 
 	i = -1;
 	j = 0;
@@ -59,16 +59,16 @@ char	*gnl_strjoin(char *str1, char *str2)
 	}
 	if (!str1 || !str2)
 		return (NULL);
-	result_str = malloc(sizeof(char) * (gnl_strlen(str1) + gnl_strlen(str2) + 1));
-	if (!result_str)
+	result = malloc(sizeof(char) * (gnl_strlen(str1) + gnl_strlen(str2) + 1));
+	if (!result)
 		return (NULL);
 	while (str1[++i] != '\0')
-		result_str[i] = str1[i];
+		result[i] = str1[i];
 	while (str2[j] != '\0')
-		result_str[i++] = str2[j++];
-	result_str[i] = '\0';
+		result[i++] = str2[j++];
+	result[i] = '\0';
 	free(str1);
-	return (result_str);
+	return (result);
 }
 
 char	*gnl_free(char *str)
