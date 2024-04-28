@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rmatsuba <rmatsuba@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: ryutaro320515 <ryutaro320515@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 13:55:55 by rmatsuba          #+#    #+#             */
-/*   Updated: 2024/03/04 17:52:18 by rmatsuba         ###   ########.fr       */
+/*   Updated: 2024/04/29 00:48:45 by ryutaro3205      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,4 +75,17 @@ char	*gnl_free(char *str)
 {
 	free(str);
 	return (NULL);
+}
+
+char	*check_end(char *keep_string, int i)
+{
+	char	*line_string;
+
+	if (keep_string[i] == '\0')
+		line_string = (char *)malloc(sizeof(char) * (i + 1));
+	else
+		line_string = (char *)malloc(sizeof(char) * (i + 2));
+	if (!line_string)
+		return (NULL);
+	return (line_string);
 }
