@@ -6,7 +6,7 @@
 #    By: ryutaro320515 <ryutaro320515@student.42    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/22 18:37:00 by rmatsuba          #+#    #+#              #
-#    Updated: 2024/01/22 16:36:55 by ryutaro3205      ###   ########.fr        #
+#    Updated: 2024/06/21 22:03:51 by rmatsuba         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,15 +38,19 @@ INCLUDE = -I include
 all : ${NAME}
 
 ${NAME} : ${OBJS}
-	ar -rcs ${NAME} ${OBJS}
+	@ar -rcs ${NAME} ${OBJS}
+	@echo "libft.a created!"
 
 %.o: %.c
-	${CC} ${CFLAGS} ${INCLUDE} -c $< -o $@
+	@${CC} ${CFLAGS} ${INCLUDE} -c $< -o $@
+	@echo "Compiled "$<" successfully!"
 clean :
-	rm -f ${OBJS} ${BONUS_OBJS}
+	@rm -f ${OBJS} ${BONUS_OBJS}
+	@echo "Object files removed!"
 
 fclean : clean
-	rm -f ${NAME}
+	@rm -f ${NAME}
+	@echo "libft.a removed!"
 
 re : fclean all
 
